@@ -13,10 +13,12 @@
   "license": "BSD",
   "dependencies": {
     "classie": "^0.1.0",
+    "component-delegate": "^0.2.3",
     "corsify": "^2.0.0",
     "format-data": "^1.0.1",
     "marked": "^0.3.2",
     "ndjson": "^1.3.0",
+    "nets": "^2.0.0",
     "ractive": "^0.6.1",
     "routes-router": "^4.1.1",
     "sqlite-search": "^3.2.0",

@@ -1,20 +1,23 @@
 {
   "name": "npm-app",
   "version": "1.0.0",
-  "description": "Morphing Search =========",
+  "description": "npm offline readme search",
   "main": "index.js",
   "scripts": {
-    "watch": "watchify -t ractivate js/index.js -o js/bundle.js -v"
+    "start": "wzrd js/index.js:js/bundle.js -- -t ractivate",
+    "server": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "max ogden",
+  "license": "BSD",
   "dependencies": {
     "classie": "^0.1.0",
+    "corsify": "^2.0.0",
     "format-data": "^1.0.1",
     "marked": "^0.3.2",
+    "ndjson": "^1.3.0",
     "ractive": "^0.6.1",
     "routes-router": "^4.1.1",
-    "sqlite-search": "^3.0.0"
+    "sqlite-search": "^3.2.0"
   },
   "devDependencies": {
     "ractivate": "^0.2.0"

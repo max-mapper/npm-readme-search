@@ -1,9 +1,14 @@
 var http = require('http')
 var sqliteSearch = require('sqlite-search')
 var Routes = require('routes-router')
-var ecstatic = require('ecstatic')
 var ndjson = require('ndjson')
 var formatData = require('format-data')
+var corsify = require('corsify')
+
+var cors = corsify({
+  "Access-Control-Allow-Methods": "GET",
+  "Access-Control-Allow-Headers": "X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept"
+})
 
 var port = 8877
 
@@ -19,9 +24,8 @@ sqliteSearch(searchOpts, function(err, db) {
 
   router.addRoute('/readme/:name', readme)
   router.addRoute('/search/:column/:term', search)
-  router.addRoute("*", ecstatic(__dirname))
 
-  http.createServer(router).listen(port, function(err) {
+  http.createServer(cors(router)).listen(port, function(err) {
     if (err) console.error('error!', err)
     console.log('listening on', port)
   })

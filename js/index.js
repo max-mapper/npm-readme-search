@@ -4,6 +4,8 @@ var nets = require('nets')
 var on = require('component-delegate').bind
 var marked = require('marked')
 
+var baseURL = 'http://localhost:8877'
+
 var searchResults = new Ractive({
   el: '.morphsearch-content .dummy-column',
   template: require( '../templates/list.html' ),
@@ -35,17 +37,16 @@ document.addEventListener('keydown', function(ev) {
 on(document, '.search-result', 'click', function(ev) {
   console.log(ev)
   var name = ev.target.innerText
-  nets({url: '/readme/' + encodeURIComponent(name), json: true}, function(err, resp, json) {
+  nets({url: baseURL + '/readme/' + encodeURIComponent(name), json: true}, function(err, resp, json) {
     if (err) alert(err)
     textContent.innerHTML = marked(json.rows[0].readme)
   })
   ev.preventDefault()
 })
 
-/***** for demo purposes only: don't allow to submit the form *****/
 morphSearch.querySelector('button[type="submit"]').addEventListener('click', function(ev) {
   var term = input.value
-  nets({url: '/search/readme/' + encodeURIComponent(term), json: true}, function(err, resp, json) {
+  nets({url: baseURL + '/search/readme/' + encodeURIComponent(term), json: true}, function(err, resp, json) {
     if (err) alert(err)
     searchResults.set('items', json.rows)
   })

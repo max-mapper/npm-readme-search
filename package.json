@@ -7,7 +7,8 @@
     "start": "wzrd js/index.js:js/bundle.js -- -t ractivate",
     "server": "node server.js",
     "clone": "gasket run clone",
-    "index": "gasket run index"
+    "index": "gasket run index",
+    "checkdeps": "dependency-check . --entry=server.js --entry=js/index.js"
   },
   "author": "max ogden",
   "license": "BSD",

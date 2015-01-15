@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "wzrd js/index.js:js/bundle.js -- -t ractivate",
-    "server": "node server.js"
+    "server": "node server.js",
+    "clone": "gasket run clone",
+    "index": "gasket run index"
   },
   "author": "max ogden",
   "license": "BSD",
@@ -20,6 +22,18 @@
     "sqlite-search": "^3.2.0"
   },
   "devDependencies": {
+    "dat": "^6.9.6",
+    "gasket": "^2.0.0",
     "ractivate": "^0.2.0"
+  },
+  "gasket": {
+    "clone": [
+      "dat clone http://npm.dathub.org --skim npm-dat"
+    ],
+    "index": [
+      "dat cat --path=npm-dat",
+      "jsonfilter --match=\"this.name && this.readme && this.readme !== 'ERROR: No README.md file found!'\"",
+      "node import.js"
+    ]
   }
 }

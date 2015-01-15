@@ -19,12 +19,14 @@
     "ndjson": "^1.3.0",
     "ractive": "^0.6.1",
     "routes-router": "^4.1.1",
-    "sqlite-search": "^3.2.0"
+    "sqlite-search": "^3.2.0",
+    "through2": "^0.6.3"
   },
   "devDependencies": {
     "dat": "^6.9.6",
     "gasket": "^2.0.0",
-    "ractivate": "^0.2.0"
+    "ractivate": "^0.2.0",
+    "wzrd": "^1.2.1"
   },
   "gasket": {
     "clone": [

@@ -9,11 +9,12 @@ npm run clone
 # create sqlite search index
 npm run index
 
-# in terminal
+# start frontend dev server
 npm start
 
-# in another terminal
+# start backend dev server (in another terminal)
 npm run server
 
+# open web app
 open http://localhost:9966
 ```

@@ -1,6 +1,5 @@
 var http = require('http')
 var sqliteSearch = require('sqlite-search')
-var searchRoute = require('./searchRoute.js')
 var Routes = require('routes-router')
 var extend = require('extend')
 var corsify = require('corsify')
@@ -13,7 +12,7 @@ var cors = corsify({
 })
 
 module.exports = function (searchOpts, cb) {
-  sqliteSearch(searchOpts, function(err, db) {
+  sqliteSearch.setup(searchOpts, function(err, db) {
     if (err) console.error('error!', err)
 
     var router = Routes()
@@ -21,7 +20,7 @@ module.exports = function (searchOpts, cb) {
       // because routes router doesn't parse query strings into opts..??
       var params = extend(qs.decode(opts.parsedUrl.query), opts.params)
 
-      searchRoute(db, params).pipe(res)
+      sqliteSearch.search(db, params).pipe(res)
     })
 
     var server = http.createServer(cors(router))

@@ -1,5 +1,4 @@
 var ndjson = require('ndjson')
-var searchRoute = require('./searchRoute.js')
 var createServer = require('./server.js')
 var path = require('path')
 
@@ -10,8 +9,6 @@ var searchOpts = {
   primaryKey: 'name',
   columns: ["name", "readme"]
 }
-
-console.log(searchOpts)
 
 createServer(searchOpts, function (err, server) {
   server.listen(port, function(err) {

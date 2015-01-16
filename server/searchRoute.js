@@ -6,8 +6,8 @@ module.exports = function(db, opts) {
   var searchOpts = {
     field: opts.column,
     query: opts.term,
-    since: opts.since,
-    limit: opts.limit,
+    limit: parseInt(opts.limit),
+    offset: parseInt(opts.offset || 0),
     select: opts.select || ["*"]
   }
 
@@ -19,7 +19,7 @@ module.exports = function(db, opts) {
 
   if (searchOpts.limit) {
     var nextOpts = {
-      offset: searchOpts.limit,
+      offset: searchOpts.offset + searchOpts.limit,
       limit: searchOpts.limit
     }
 

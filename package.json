@@ -44,7 +44,7 @@
     ],
     "index": [
       "dat cat --path=npm-dat",
-      "jsonfilter --match=\"this.name && this.readme && this.readme !== 'ERROR: No README.md file found!'\"",
+      "jsonfilter --match=\"this.name && this.readme && this.repository && this.repository.type == 'git' && this.readme !== 'ERROR: No README.md file found!'\"",
       "node import.js"
     ]
   }

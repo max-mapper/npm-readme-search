@@ -22,8 +22,7 @@ body {
 }
 
 a {
-	color: #fff;
-	text-decoration: none;
+	color: #111;
 	outline: none;
 }
 
@@ -78,10 +77,23 @@ a:focus {
 	color: #000;
 }
 
-.search-result { padding: 10px; display: block; margin: 0; outline: none; }
-.search-result:hover { background: #ccc; cursor: pointer; cursor: hand; }
+.search-result {
+	padding: 10px;
+	display: block;
+	margin: 0;
+	outline: none;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.search-result:not(.bookend):hover { background: #ccc; cursor: pointer; cursor: hand; }
 .search-result:active, .search-result:focus { background: white; }
-.text-content { padding: 10px; float: left; width: 70%; }
+.text-content {
+	padding-left: 10px;
+	float: left;
+	width: 65%;
+	position: fixed;
+	left: 35%;
+}
 
 /* To Navigation Style */
 .codrops-links {

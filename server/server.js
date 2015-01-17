@@ -16,7 +16,7 @@ module.exports = function (searchOpts, cb) {
     if (err) console.error('error!', err)
 
     var router = Routes()
-git
+
     router.addRoute('/search/:field/:query', function (req, res, opts) {
       // because routes router doesn't parse query strings into opts..??
       var params = extend(qs.decode(opts.parsedUrl.query), opts.params)

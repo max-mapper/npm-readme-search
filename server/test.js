@@ -3,12 +3,15 @@ var sqliteSearch = require('sqlite-search')
 var createServer = require('./server.js')
 var request = require('request')
 var parallel = require('run-parallel')
+var path = require('path')
 
 var searchOpts = {
-  path: "npm-readmes.sqlite",
+  path: path.join(__dirname, '..', "npm-readmes.sqlite"),
   primaryKey: "name",
   columns: ["name", "readme"]
 }
+
+console.log(searchOpts)
 
 var port = 88888
 
@@ -36,6 +39,7 @@ test('can search through api', function (t) {
       }, function (err, resp, json) {
         t.ifError(err)
         t.ok(json.rows, 'rows return properly')
+        t.true(json.rows.length > 0, 'returns more than one row')
         cb()
       })
     },
@@ -106,6 +110,7 @@ test('next in paginator works as intentded to get next batch', function (t) {
       }, function (err, resp, json2) {
         t.ifError(err)
         t.ok(json2.rows, 'limit & offset')
+        t.true(json.rows.length > 0, 'returns at least one item')
         t.true(json.rows[0].name != json2.rows[0].name, 'get different batch on next request')
         t.true(json.rows[0].name < json2.rows[0].name, 'get a greater batch on next request')
         t.equals(json2.rows.length, 1, 'uses limit query option with offset')

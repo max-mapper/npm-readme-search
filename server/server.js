@@ -12,15 +12,15 @@ var cors = corsify({
 })
 
 module.exports = function (searchOpts, cb) {
-  sqliteSearch.setup(searchOpts, function(err, db) {
+  sqliteSearch(searchOpts, function(err, searcher) {
     if (err) console.error('error!', err)
 
     var router = Routes()
-    router.addRoute('/search/:column/:term', function (req, res, opts) {
+    router.addRoute('/search/:field/:query', function (req, res, opts) {
       // because routes router doesn't parse query strings into opts..??
       var params = extend(qs.decode(opts.parsedUrl.query), opts.params)
-
-      sqliteSearch.search(db, params).pipe(res)
+      params.formatType = 'object'
+      searcher.createSearchStream(params).pipe(res)
     })
 
     var server = http.createServer(cors(router))

@@ -43,7 +43,7 @@
       "dat clone http://npm.dathub.org npm-dat"
     ],
     "index": [
-      "dat export -d readmes --path=npm-dat",
+      "dat export -d modules --path=npm-dat",
       "jsonfilter --match=\"this.name && this.readme && this.repository && this.repository.type == 'git' && this.readme !== 'ERROR: No README.md file found!'\"",
       "node import.js"
     ]

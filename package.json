@@ -33,10 +33,10 @@
   },
   "gasket": {
     "clone": [
-      "dat clone http://npm.dathub.org --skim npm-dat"
+      "dat clone http://npm.dathub.org npm-dat"
     ],
     "index": [
-      "dat cat --path=npm-dat",
+      "dat export -d readmes --path=npm-dat",
       "jsonfilter --match=\"this.name && this.readme && this.readme !== 'ERROR: No README.md file found!'\"",
       "node import.js"
     ]

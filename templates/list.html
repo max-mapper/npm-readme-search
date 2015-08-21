@@ -1,4 +1,9 @@
-<h2>{{name}}</h2>
+<!--<h2>{{name}}</h2>-->
 {{#items}}
 <h3 class="search-result" tabindex=0>{{name}}</h3>
 {{/items}}
+{{#loading}}
+<h2 class="search-result bookend" tabindex=0>loading...</h2>
+{{else}}
+{{#if items}}<h2 class="search-result bookend" tabindex=0>that's all</h2>{{/if}}
+{{/loading}}

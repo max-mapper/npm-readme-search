@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "wzrd js/index.js:js/bundle.js -- -t ractivate",
-    "server": "node server.js",
+    "server": "node server/index.js",
+    "test": "node server/test.js",
     "clone": "gasket run clone",
     "index": "gasket run index",
     "checkdeps": "dependency-check . --entry=server.js --entry=js/index.js"
@@ -16,6 +17,8 @@
     "classie": "^0.1.0",
     "component-delegate": "^0.2.3",
     "corsify": "^2.0.0",
+    "debug": "^2.1.1",
+    "extend": "^2.0.0",
     "format-data": "^1.0.1",
     "marked": "^0.3.2",
     "ndjson": "^1.3.0",
@@ -28,16 +31,20 @@
   "devDependencies": {
     "dat": "^6.9.6",
     "gasket": "^2.0.0",
+    "parallel": "^0.2.1",
     "ractivate": "^0.2.0",
+    "request": "^2.51.0",
+    "run-parallel": "^1.0.0",
+    "tape": "^3.2.0",
     "wzrd": "^1.2.1"
   },
   "gasket": {
     "clone": [
-      "dat clone http://npm.dathub.org --skim npm-dat"
+      "dat clone http://npm.dathub.org npm-dat"
     ],
     "index": [
-      "dat cat --path=npm-dat",
-      "jsonfilter --match=\"this.name && this.readme && this.readme !== 'ERROR: No README.md file found!'\"",
+      "dat export -d modules --path=npm-dat",
+      "jsonfilter --match=\"this.name && this.readme && this.repository && this.repository.type == 'git' && this.readme !== 'ERROR: No README.md file found!'\"",
       "node import.js"
     ]
   }

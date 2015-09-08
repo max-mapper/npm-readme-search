@@ -13,7 +13,7 @@ var searchOpts = {
 
 console.log(searchOpts)
 
-var port = 88888
+var port = 65535
 
 function startServer (t, cb) {
   createServer(searchOpts, function (err, server) {

@@ -25,12 +25,14 @@
     "nets": "^2.0.0",
     "ractive": "^0.6.1",
     "routes-router": "^4.1.1",
-    "sqlite-search": "^3.2.0",
+    "sqlite-search": "^4.1.0",
     "through2": "^0.6.3"
   },
   "devDependencies": {
-    "dat": "^6.9.6",
+    "dat": "^7.0.4",
     "gasket": "^2.0.0",
+    "github-url-to-object": "^1.5.2",
+    "jsonfilter": "^1.1.2",
     "parallel": "^0.2.1",
     "ractivate": "^0.2.0",
     "request": "^2.51.0",
